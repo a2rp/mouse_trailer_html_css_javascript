@@ -1,0 +1,11 @@
+{
+  "name": "mouse-trailer-html-css-javascript",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Responsive mouse trailer interaction built with HTML, CSS and JavaScript.",
+  "homepage": "https://a2rp.github.io/mouse_trailer_html_css_javascript/",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "npx --yes gh-pages -d dist"
+  }
+}

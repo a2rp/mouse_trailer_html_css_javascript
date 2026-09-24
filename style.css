@@ -1,52 +1,16 @@
-*,
-::before,
-::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: 12px;
-}
-
-body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-body:hover .trailer {
-  opacity: 1;
-}
-
-.container {
-  background-color: aliceblue;
-  min-height: 100vh;
-  padding: 15px;
-}
-.container .heading {
-  text-decoration: underline;
-}
-.container .trailer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  z-index: 10000;
-  pointer-events: none;
-  opacity: 0;
-  transition: all 0.5s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.container .trailer i {
-  transition: all 0.3s ease;
-  display: none;
-  color: #f00;
-}
-.container .contentContainer {
-  margin-top: 50px;
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}/*# sourceMappingURL=style.css.map */
+* { box-sizing: border-box; }
+:root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #eff5ff; background: #09111f; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body { min-width: 320px; min-height: 100vh; margin: 0; background: #09111f; }
+a, button { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; cursor: pointer; }
+.siteHeader { position: fixed; inset: 0 0 auto; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; padding: 0 clamp(1rem, 5vw, 5rem); border-bottom: 1px solid rgba(170, 202, 235, 0.16); background: rgba(9, 17, 31, 0.9); backdrop-filter: blur(16px); }
+.brand { display: inline-flex; align-items: center; gap: 0.75rem; color: inherit; text-decoration: none; }.brand img { width: 42px; height: 42px; padding: 5px; border: 1px solid #365a7e; border-radius: 12px; background: #122842; object-fit: contain; }.brand span { display: grid; gap: 0.1rem; }.brand small { color: #78c5ff; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.14em; }.brand strong { font-size: 1rem; }
+.siteNav { display: flex; gap: 1.6rem; margin-left: auto; }.siteNav a { color: #9fb6cf; font-size: 0.86rem; text-decoration: none; transition: color 180ms ease, text-shadow 180ms ease; }.siteNav a:hover { color: #fff; text-shadow: 0 0 14px rgba(120, 197, 255, 0.35); }.menuButton { display: none; width: 40px; height: 40px; padding: 9px; border: 1px solid #365a7e; border-radius: 10px; background: transparent; }.menuButton span { display: block; height: 2px; margin: 4px 0; background: #d9ecff; }
+.pageMain { padding: 155px clamp(1rem, 5vw, 5rem) 100px; background: radial-gradient(circle at 15% 5%, rgba(59, 128, 176, 0.22), transparent 32%), #09111f; }.hero, .gallerySection { width: min(1160px, 100%); margin: 0 auto; }.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr); align-items: center; gap: clamp(2rem, 8vw, 8rem); min-height: 540px; }.heroCopy { max-width: 630px; }.eyebrow { color: #78c5ff; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; }.hero h1 { max-width: 650px; margin: 1rem 0 1.4rem; font-size: clamp(3rem, 7vw, 7rem); line-height: 0.92; letter-spacing: -0.08em; }.hero p, .sectionHeading p { max-width: 550px; color: #9fb6cf; font-size: 1rem; line-height: 1.75; }.textLink { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.7rem; color: #fff; font-weight: 800; text-decoration: none; }.textLink span { transition: transform 180ms ease; }.textLink:hover span { transform: translate(3px, -3px); }.heroVisual { position: relative; min-height: 430px; overflow: hidden; border: 1px solid rgba(170, 202, 235, 0.2); border-radius: 28px; background: linear-gradient(145deg, #163251, #0d1929 65%, #09111f); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3); }.heroVisual::before, .heroVisual::after { position: absolute; content: ""; border: 1px solid rgba(120, 197, 255, 0.25); border-radius: 50%; }.heroVisual::before { width: 330px; height: 330px; top: 11%; left: 12%; }.heroVisual::after { width: 190px; height: 190px; right: 12%; bottom: 13%; }.visualGlow { position: absolute; top: 30%; left: 50%; width: 120px; height: 120px; border: 1px solid #78c5ff; border-radius: 50%; box-shadow: 0 0 0 24px rgba(120, 197, 255, 0.05), 0 0 70px rgba(120, 197, 255, 0.28); transform: translate(-50%, -50%); }.visualCaption { position: absolute; right: 1.3rem; bottom: 1.3rem; padding: 0.7rem 0.9rem; border: 1px solid rgba(170, 202, 235, 0.18); border-radius: 10px; color: #c1d8ef; background: rgba(9, 17, 31, 0.7); font-size: 0.78rem; }
+.gallerySection { margin-top: 8rem; }.sectionHeading { max-width: 680px; }.sectionHeading h2, .footerIntro h2 { margin: 0.8rem 0; font-size: clamp(2.2rem, 5vw, 4.8rem); line-height: 0.98; letter-spacing: -0.07em; }.galleryGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }.galleryCard { min-height: 390px; overflow: hidden; border: 1px solid rgba(170, 202, 235, 0.18); border-radius: 18px; background: #0d1b2d; transition: border-color 180ms ease, box-shadow 180ms ease; }.galleryCard:hover { border-color: #78c5ff; box-shadow: 0 0 22px rgba(120, 197, 255, 0.14); }.galleryCard img { display: block; width: 100%; height: 220px; object-fit: cover; }.galleryCard > div { padding: 1.25rem; }.cardNumber { display: inline-block; color: #78c5ff; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; }.galleryCard h3 { margin: 1.2rem 0 0.5rem; font-size: 1.25rem; }.galleryCard p { margin: 0; color: #9fb6cf; line-height: 1.6; font-size: 0.9rem; }.galleryCardText { display: flex; flex-direction: column; justify-content: flex-end; padding: 1.25rem; background: linear-gradient(145deg, #173552, #0d1b2d); }
+.siteFooter { padding: 5rem clamp(1rem, 5vw, 5rem) 1.5rem; border-top: 1px solid rgba(170, 202, 235, 0.16); background: #07101c; }.footerIntro, .footerLinks, .siteFooter p { width: min(1160px, 100%); margin-left: auto; margin-right: auto; }.footerIntro h2 { max-width: 600px; }.footerLinks { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 3rem; }.footerLinks a { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(170, 202, 235, 0.22); border-radius: 10px; color: #bdd4e9; font-size: 0.78rem; font-weight: 800; text-decoration: none; transition: color 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }.footerLinks a:hover { color: #fff; border-color: #78c5ff; box-shadow: 0 0 16px rgba(120, 197, 255, 0.18); }.siteFooter p { margin-top: 2rem; color: #8098b1; font-size: 0.8rem; }.siteFooter p a { color: #fff; font-weight: 800; }
+.trailer { position: fixed; top: 0; left: 0; z-index: 100; display: grid; width: 24px; height: 24px; place-items: center; border: 1px solid #78c5ff; border-radius: 50%; color: #78c5ff; background: rgba(9, 17, 31, 0.82); box-shadow: 0 0 18px rgba(120, 197, 255, 0.3); pointer-events: none; opacity: 0.8; transition: width 180ms ease, height 180ms ease, border-color 180ms ease, box-shadow 180ms ease, opacity 180ms ease; }.trailer.isActive { width: 86px; height: 38px; border-radius: 12px; color: #09111f; background: #78c5ff; box-shadow: 0 0 24px rgba(120, 197, 255, 0.4); opacity: 1; }.trailerMark { font-size: 1.1rem; }.trailerLabel { display: none; font-size: 0.7rem; font-weight: 800; }.trailer.isActive .trailerMark { display: none; }.trailer.isActive .trailerLabel { display: block; }
+@media (max-width: 800px) { .siteNav { position: absolute; top: calc(100% + 0.5rem); right: 1rem; display: none; min-width: 170px; padding: 0.5rem; border: 1px solid rgba(170, 202, 235, 0.2); border-radius: 12px; background: #0d1b2d; box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35); }.siteNav.isOpen { display: grid; }.siteNav a { padding: 0.65rem; border-radius: 8px; }.siteNav a:hover { background: rgba(120, 197, 255, 0.1); }.menuButton { display: block; }.hero { grid-template-columns: 1fr; min-height: auto; gap: 3rem; }.heroVisual { min-height: 330px; }.galleryGrid { grid-template-columns: 1fr; }.galleryCard { min-height: auto; }.galleryCard img { height: 250px; } }
+@media (pointer: coarse) { .trailer { display: none; } }
+@media (max-width: 520px) { .pageMain { padding-top: 125px; }.hero h1 { font-size: clamp(2.8rem, 15vw, 4.5rem); }.heroVisual { min-height: 270px; border-radius: 20px; }.gallerySection { margin-top: 6rem; }.siteFooter { padding-top: 4rem; } }
