@@ -1,38 +1,53 @@
-window.onload = () => {
-    const trailer = document.querySelector(".trailer");
+const trailer = document.querySelector(".trailer");
+const trailerLabel = document.querySelector(".trailerLabel");
+const menuButton = document.querySelector(".menuButton");
+const siteNav = document.querySelector(".siteNav");
+const year = document.querySelector("#currentYear");
+let animationFrame = null;
+let cursorX = 0;
+let cursorY = 0;
 
-    const animateTrailer = event => {
-        const pointX = event.clientX - trailer.offsetWidth / 2;
-        const pointY = event.clientY - trailer.offsetHeight / 2;
-        const keyframes = {
-            transform: `translate(${pointX}px, ${pointY}px)`
-        };
-        trailer.animate(keyframes, {
-            duration: 800,
-            fill: "forwards"
-        });
-    };
-
-    window.onmousemove = event => {
-        animateTrailer(event);
-    };
-
-    document.querySelector(".img1").onmouseover = event => {
-        document.querySelector(".icon1").style.display = "block";
-        trailer.style.cssText = `width: 50px; height: 50px;`;
-    };
-    document.querySelector(".img1").onmouseout = event => {
-        document.querySelector(".icon1").style.display = "none";
-        trailer.style.cssText = `width: 20px; height: 20px;`;
-    };
-
-    document.querySelector(".img2").onmouseover = event => {
-        document.querySelector(".icon2").style.display = "block";
-        trailer.style.cssText = `width: 50px; height: 50px;`;
-    };
-    document.querySelector(".img2").onmouseout = event => {
-        document.querySelector(".icon2").style.display = "none";
-        trailer.style.cssText = `width: 20px; height: 20px;`;
-    };
+const moveTrailer = () => {
+    trailer.style.transform = `translate3d(${cursorX - trailer.offsetWidth / 2}px, ${cursorY - trailer.offsetHeight / 2}px, 0)`;
+    animationFrame = null;
 };
 
+window.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    cursorX = event.clientX;
+    cursorY = event.clientY;
+    if (!animationFrame) animationFrame = requestAnimationFrame(moveTrailer);
+});
+
+document.querySelectorAll("[data-trailer-label]").forEach((target) => {
+    target.addEventListener("pointerenter", () => {
+        trailerLabel.textContent = target.dataset.trailerLabel;
+        trailer.classList.add("isActive");
+    });
+    target.addEventListener("pointerleave", () => {
+        trailerLabel.textContent = "";
+        trailer.classList.remove("isActive");
+    });
+});
+
+menuButton.addEventListener("click", () => {
+    const isOpen = siteNav.classList.toggle("isOpen");
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+});
+
+document.addEventListener("click", (event) => {
+    if (!siteNav.contains(event.target) && !menuButton.contains(event.target)) {
+        siteNav.classList.remove("isOpen");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+    }
+});
+
+siteNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+    siteNav.classList.remove("isOpen");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open menu");
+}));
+
+year.textContent = new Date().getFullYear();
