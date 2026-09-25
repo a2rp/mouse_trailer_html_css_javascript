@@ -7,6 +7,7 @@ A small static interaction demo where a custom trailer follows the pointer and c
 - Fixed branded header with local logo and mobile menu
 - Pointer-following trailer with contextual hover labels
 - Local image assets with responsive gallery cards
+- Floating go-to-top control with smooth scrolling
 - Touch-device fallback that hides the pointer-only interaction
 - Icon-only social and support footer links with dynamic copyright
 
