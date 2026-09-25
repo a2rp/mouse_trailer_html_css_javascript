@@ -14,3 +14,51 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 800px) { .siteNav { position: absolute; top: calc(100% + 0.5rem); right: 1rem; display: none; min-width: 170px; padding: 0.5rem; border: 1px solid rgba(170, 202, 235, 0.2); border-radius: 12px; background: #0d1b2d; box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35); }.siteNav.isOpen { display: grid; }.siteNav a { padding: 0.65rem; border-radius: 8px; }.siteNav a:hover { background: rgba(120, 197, 255, 0.1); }.menuButton { display: block; }.hero { grid-template-columns: 1fr; min-height: auto; gap: 3rem; }.heroVisual { min-height: 330px; }.galleryGrid { grid-template-columns: 1fr; }.galleryCard { min-height: auto; }.galleryCard img { height: 250px; } }
 @media (pointer: coarse) { .trailer { display: none; } }
 @media (max-width: 520px) { .pageMain { padding-top: 125px; }.hero h1 { font-size: clamp(2.8rem, 15vw, 4.5rem); }.heroVisual { min-height: 270px; border-radius: 20px; }.gallerySection { margin-top: 6rem; }.siteFooter { padding-top: 4rem; } }
+
+.footerLinks svg,
+.goTopButton svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.goTopButton {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 40;
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(170, 202, 235, 0.3);
+    border-radius: 50%;
+    background: #122940;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    transition: color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.goTopButton[hidden] {
+    display: none;
+}
+
+.goTopButton:hover,
+.goTopButton:focus-visible {
+    border-color: #78c5ff;
+    color: #78c5ff;
+    box-shadow: 0 0 18px rgba(120, 197, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 520px) {
+    .goTopButton {
+        right: 0.9rem;
+        bottom: 0.9rem;
+    }
+}
