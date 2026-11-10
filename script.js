@@ -6,6 +6,7 @@ const year = document.querySelector("#currentYear");
 let animationFrame = null;
 let cursorX = 0;
 let cursorY = 0;
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const moveTrailer = () => {
     trailer.style.transform = `translate3d(${cursorX - trailer.offsetWidth / 2}px, ${cursorY - trailer.offsetHeight / 2}px, 0)`;
@@ -36,19 +37,28 @@ menuButton.addEventListener("click", () => {
     menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
 });
 
-document.addEventListener("click", (event) => {
-    if (!siteNav.contains(event.target) && !menuButton.contains(event.target)) {
-        siteNav.classList.remove("isOpen");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open menu");
-    }
-});
-
-siteNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+const closeMenu = () => {
     siteNav.classList.remove("isOpen");
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "Open menu");
-}));
+};
+
+document.addEventListener("click", (event) => {
+    if (!siteNav.contains(event.target) && !menuButton.contains(event.target)) {
+        closeMenu();
+    }
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && siteNav.classList.contains("isOpen")) {
+        closeMenu();
+        menuButton.focus();
+    }
+});
+
+siteNav.querySelectorAll("a").forEach((link) =>
+    link.addEventListener("click", closeMenu),
+);
 
 year.textContent = new Date().getFullYear();
 const goTopButton = document.querySelector(".goTopButton");
@@ -58,7 +68,10 @@ const updateGoTopButton = () => {
 };
 
 goTopButton.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+        top: 0,
+        behavior: reducedMotion.matches ? "auto" : "smooth",
+    });
 });
 
 window.addEventListener("scroll", updateGoTopButton, { passive: true });
